@@ -5,7 +5,7 @@
       <div class="card-body">
         <h3 class="mb-0">Carpeta del artista</h3>
         <div class="form-group">
-          <div class="form-label"><strong>Para:</strong>
+          <div class="form-label" *ngIf="query"><strong>Para:</strong>
             {{ query }}
           </div>
           <input class="form-control mt-2" type="text">
@@ -19,8 +19,10 @@
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
           *ngFor="let artist of artists"
-          (click)="showArtist(artist)">
+          (click)="showArtist(artist)"
+          [style.background-color]="artist.highlight ? '#EEE' : '#FFF'">
               <div class="media">
+                <img class="mr-3 rounded align-self-center img-fluid" style="width: 70px;" [src]="'./assets/images/' + artist.shortname + '_tn.jpg'" alt="{{ 'Foto de ' + artist.name }}">
                 <div class="media-body align-self-center">
                   <h5 class="m-0">{{ artist.name }}</h5>
                   {{ artist.reknown }}
